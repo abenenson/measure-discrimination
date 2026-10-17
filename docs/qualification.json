@@ -1,0 +1,214 @@
+{
+  "status": "passed",
+  "recorded_utc": "2026-10-17T19:17:45.981426+00:00",
+  "qualified_code_commit": "9fcb2cc3b4812aaf6e20d08012d1632c78b51c03",
+  "compiler": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "dependency_revisions": {
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "plausible": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+    "LeanSearchClient": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+    "importGraph": "e928b72544873815af278d38681b31c0293588e3",
+    "proofwidgets": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+    "aesop": "355695d523e41d0554926416cba2a2b3544fbbc9",
+    "Qq": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+    "batteries": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+    "Cli": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"
+  },
+  "authored_source_sha256": {
+    "MeasureDiscrimination/MeasurableLeftInverse.lean": "9fde5c96efc5d82cd873830d70e3d9ab08d72f4ee62ae0ab137794fbedd30a7e",
+    "MeasureDiscrimination/ProductDiscrimination.lean": "617c96799fbf2e5e9311364cd358a2a969abb044b3f691c921a273a85434b979",
+    "MeasureDiscrimination.lean": "e605a15db57668e1d8ef49a420411e588712d75bea0d7fba04b7c1f488fc5274",
+    "MeasureDiscriminationExamples/Basic.lean": "1a99271cc482dbfc08dc9cfd9fea847e3ff932691ef1230923a8110a6b8a4833",
+    "MeasureDiscriminationExamples.lean": "c271a93fe1cfbc2e08cf4b4282eb535c703d23b0684417e6e25ed39279b59d88"
+  },
+  "verification_program_sha256": "2dd6e831131e22a827ea3a85b6f8536443cbe55d79b53c78be610a55e48a37a8",
+  "verification_manifest_sha256": "279421dedf1d90bdfe6daa690b487edc6b5ad3cda46fb9e3d1b2da61a097be4a",
+  "authored_module_count": 5,
+  "named_declaration_count": 19,
+  "full_linter_count": 16,
+  "named_transitive_axioms": {
+    "MeasureDiscrimination.map_withDensity_comp_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.absolutelyContinuous_map_iff_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.map_tilted_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_map_comp_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.klDiv_map_of_measurable_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_fst_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_snd_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_comp_fst_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_comp_snd_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.prod_absolutelyContinuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_prod": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.llr_prod": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.prod_absolutelyContinuous_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_prod_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.llr_prod_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.klDiv_duplicate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary_preserves_ac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary_cancels_llr": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "warning_policy": "Warnings and errors are fatal. Every authored source is separately re-elaborated with all16linters.",
+  "clean_build_scope": {
+    "committed_clean_clone": true,
+    "initial_authored_build_artifacts_absent": true,
+    "public_dependency_build_cache_reused": true,
+    "full_dependency_rebuild_claimed": false,
+    "final_run_reused_authored_build_cache": false,
+    "finite_repeat_reason": null
+  },
+  "stages": [
+    {
+      "name": "compiler-version",
+      "exit_code": 0
+    },
+    {
+      "name": "exact-build",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination-MeasurableLeftInverse.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination-ProductDiscrimination.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscriminationExamples-Basic.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscriminationExamples.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "axioms",
+      "exit_code": 0
+    }
+  ],
+  "independent_internal_review": {
+    "verdict": "GO",
+    "scope": "Exact qualified code commit and complete package boundary, source/provenance, verifier rejection tests and native qualification receipts",
+    "sealed_receipt_sha256": "ae9c3136e59cf68d91b7fdc8adf377e7c0ef232c5d6eaeb714b2ded54f2d1b36",
+    "external_specialist_review_claimed": false
+  },
+  "combined_consumer": {
+    "status": "passed",
+    "scope": "All three public roots and opt-in example roots import together; three meaningful APIs elaborate with standard axioms only",
+    "receipt_sha256": "82918a6c7cfede00c7e495c594a0bda441c4fd052b0276755d82bc0049c5a1b1"
+  },
+  "resource_observations": {
+    "sampled_peak_tree_rss_bytes": 6212870144,
+    "memory_ceiling_bytes": 17179869184,
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "surviving_non_zombie_pids": []
+  },
+  "logs": {
+    "directory": "qualification-logs",
+    "representation": "Diagnostic qualification/checkout absolute paths replaced by symbolic placeholders; original byte hashes below refer to preserved raw receipts",
+    "raw_sha256": {
+      "axioms.log": "9ee43aa7c8ca57aec4869665f117561affc8c7788f0cba511c3eebb6586b6155",
+      "compiler-version.log": "355a9a028f81641782d75d6e6b58dec70f29d2f61238a9e271690259d9bf5680",
+      "exact-build.log": "df3a8ba98b7b3c7ee9d620dd67c9db8ae14b4c388cbb906c93ef61f303947949",
+      "lint-MeasureDiscrimination-MeasurableLeftInverse.lean.log": "d9884206ea38db832adc49754bfae36fa24b17aa711dce101352a41f1bb4c562",
+      "lint-MeasureDiscrimination-ProductDiscrimination.lean.log": "a73452f52d5b7b6b413c1fa86011ddc232288bed2e0c30ba5ba0814a7118b531",
+      "lint-MeasureDiscrimination.lean.log": "ac1799f9fea6cd938e3193af8d9329054089efc5c790735a25a51b0059067391",
+      "lint-MeasureDiscriminationExamples-Basic.lean.log": "647415f4a18afab2b773390c433ccc6d934d4fe6bbc983ca4d16e15bbfd08e0c",
+      "lint-MeasureDiscriminationExamples.lean.log": "ef38eac6ca526efdfa3b677d54eadb3430796cf121353dcbf02a0b9974f4bbe7",
+      "qualification.json": "1be6ddad3b07126831f10547600a8684b38734fdb72b5958a99264848e7aa64a"
+    }
+  },
+  "hosted_ci": {
+    "status": "not_executed",
+    "reason": "No remote repository created: GitHub private-repository creation request denied HTTP403 Resource not accessible by integration. Local results are not hosted CI receipts."
+  },
+  "release_status": "Local private preparation; no hosted visibility, public release or remote push claimed"
+}
