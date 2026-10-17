@@ -1,0 +1,28 @@
+{
+  "copyright_holder": "Adam Benenson",
+  "declared_source_license": "Apache-2.0",
+  "provenance_scope": "Only the listed generic mathematical files. No license is inferred for any surrounding private repository.",
+  "license_text_source": "https://github.com/abenenson/cencov-petz/blob/f6cf035a4c2882ae1fbc0a83416ab8142aceb676/LICENSE",
+  "files": [
+    {
+      "source_file": "InformationTheory/RelativeEntropy/MeasurableLeftInverse.lean",
+      "original_sha256": "5fc2f0fb26df4aaab44dd49b10e21132dcec1101c27e5db252609367856cb3f5",
+      "source_commit": "6e1f249d1d5f21495192a0775ec5c2aa3ecde233",
+      "extracted_file": "MeasureDiscrimination/MeasurableLeftInverse.lean",
+      "license": "Apache-2.0",
+      "copyright": "2026 Adam Benenson",
+      "transformation": "Package import and namespace changes only",
+      "extracted_sha256": "9fde5c96efc5d82cd873830d70e3d9ab08d72f4ee62ae0ab137794fbedd30a7e"
+    },
+    {
+      "source_file": "InformationTheory/RelativeEntropy/ProductDiscrimination.lean",
+      "original_sha256": "98e3666c0ee1c767bba93593eb3488c62c98a4a88fa90b7a5dcf8288cbc4f8b3",
+      "source_commit": "6e1f249d1d5f21495192a0775ec5c2aa3ecde233",
+      "extracted_file": "MeasureDiscrimination/ProductDiscrimination.lean",
+      "license": "Apache-2.0",
+      "copyright": "2026 Adam Benenson",
+      "transformation": "Package import and namespace changes only",
+      "extracted_sha256": "617c96799fbf2e5e9311364cd358a2a969abb044b3f691c921a273a85434b979"
+    }
+  ]
+}
