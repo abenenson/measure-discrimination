@@ -36,7 +36,7 @@ lake --rehash --wfail build
 python3 scripts/verify.py
 ```
 
-The verifier forces every authored module and example to rebuild, re-elaborates
+The verifier builds every authored module and example, re-elaborates
 each source with all 16 linters including theorem documentation, rejects warnings,
 checks declaration coverage, and audits transitive axioms of every explicit public
 name. Only `Classical.choice`, `Quot.sound` and `propext` are allowed. It rejects
