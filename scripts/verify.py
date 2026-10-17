@@ -158,7 +158,7 @@ def main():
             code = uncomment(source)
             record['source_sha256'][relative] = hashlib.sha256(path.read_bytes()).hexdigest()
             assert not re.search(r'\b(?:sorry|admit|sorryAx)\b', code), relative
-            assert not re.search(r'^\s*(?:axiom|constant)\b', code, re.M), relative
+            assert not re.search(r'^\s*(?:@\[[^\]]*\]\s*)*(?:(?:private|protected|unsafe|noncomputable)\s+)*(?:axiom|constant)\b', code, re.M), relative
             assert all(len(line) <= 100 for line in source.splitlines()), relative
             assert source.count('Copyright (c)') == 1 and '/-!' in source, relative
             for module in re.findall(r'^import\s+([\w.]+)', code, re.M):
