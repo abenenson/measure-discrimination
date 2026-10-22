@@ -63,8 +63,9 @@ All five precedent remote heads were rechecked and equal the commits listed abov
 audit of actual source/configuration, not an inference that every earlier project ran every
 present check. All five lock nine public dependencies and pin Lean4.29.1. Cencov-Petz,
 compact-spectral and Rellich-Kondrachov use Lean lakefiles and retain root LICENSE files;
-channel-capacity and godel-loeb use TOML lakefiles and have no root LICENSE file at the inspected
-heads. That observation does not assign or remove any license on their authored files.
+channel-capacity and godel-loeb use TOML lakefiles and retain root `LICENSE-APACHE` and
+`LICENSE-MIT` texts; their READMEs specify dual MIT OR Apache 2.0 licensing. Authored file
+notices and repository license declarations must be read together.
 Channel-capacity has concrete positive/counterexample modules; the other projects have their own
 scoped APIs, source checks and documentation rather than the same example layout.
 
