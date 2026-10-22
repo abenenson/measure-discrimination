@@ -3,7 +3,8 @@
 Lossless measurable encodings and product discrimination, formalized in Lean with Mathlib only.
 
 Private preparation. Local qualification and its exact source identities are recorded
-in `docs/qualification.json` when complete. Hosted CI execution is a separate result;
+in `docs/qualification.json` (historical Oct17) and `docs/private-release-qualification.json`
+when the refreshed run is sealed. Hosted CI execution is a separate result;
 no hosted pass or public release is claimed.
 
 ## Mathematical scope
@@ -74,3 +75,16 @@ No surrounding repository or unrelated source is assigned a license here.
 [API and verification notes](docs/overview.md) describe the package boundary and
 qualification process. These are formalizations of the scoped mathematical results;
 no application-specific physical or empirical implication is claimed.
+
+## Private inspection update
+
+[Current overlap audit](docs/overlap-audit.md) records the source-level Mathlib/external comparison
+and limits novelty/upstream claims. The original mathematical files and pins are retained.
+Verifier hardening rejects native panics and malformed/error JSON even on exit zero, reads every
+ordinary import and fails closed on unsupported import headers, and refuses optimized Python
+that would disable assertions. Seven durable Python regression controls run before native CI;
+CI is configured to retain verification evidence using a pinned upload action. Configuration
+is not a hosted execution result. No public release or automatic upstream submission is enabled.
+
+Run the controls with `python3 -m unittest discover -s scripts -p 'test_*.py'`.
+The full verification command remains `python3 scripts/verify.py`.
