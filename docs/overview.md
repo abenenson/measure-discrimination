@@ -56,3 +56,20 @@ The additional gates are built examples, immutable Mathlib/action revisions, exp
 warning-fatal source/full-lint execution and a complete named public axiom ledger.
 This compares observable packaging and verification practice; it does not assert that
 one library's mathematics is superior to another's or that the older projects failed.
+
+## Refreshed comparison, 2026-10-22
+
+All five precedent remote heads were rechecked and equal the commits listed above. This is an
+audit of actual source/configuration, not an inference that every earlier project ran every
+present check. All five lock nine public dependencies and pin Lean4.29.1. Cencov-Petz,
+compact-spectral and Rellich-Kondrachov use Lean lakefiles and retain root LICENSE files;
+channel-capacity and godel-loeb use TOML lakefiles and have no root LICENSE file at the inspected
+heads. That observation does not assign or remove any license on their authored files.
+Channel-capacity has concrete positive/counterexample modules; the other projects have their own
+scoped APIs, source checks and documentation rather than the same example layout.
+
+This package keeps a small public root, opt-in example imports, Mathlib-only dependencies,
+per-file Apache notices and ORIGIN hashes. Its additional implemented gates are exact-source
+builds, all16 source linters, the explicit transitive axiom ledger, durable verifier rejection
+controls and always-retained CI evidence configuration. No precedent was modified or requalified.
+The supported pair remains Lean4.34.1/d13f23b; earlier-pair compatibility is not inferred.
