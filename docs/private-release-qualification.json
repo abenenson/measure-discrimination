@@ -1,0 +1,223 @@
+{
+  "status": "passed",
+  "recorded_utc": "2026-10-22T02:10:46.027228+00:00",
+  "qualified_code_commit": "9ac462ee703dda0ca254e68df3bd93aa49c802d4",
+  "compiler": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "dependency_revisions": {
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "plausible": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+    "LeanSearchClient": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+    "importGraph": "e928b72544873815af278d38681b31c0293588e3",
+    "proofwidgets": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+    "aesop": "355695d523e41d0554926416cba2a2b3544fbbc9",
+    "Qq": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+    "batteries": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+    "Cli": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"
+  },
+  "authored_source_sha256": {
+    "MeasureDiscrimination/MeasurableLeftInverse.lean": "9fde5c96efc5d82cd873830d70e3d9ab08d72f4ee62ae0ab137794fbedd30a7e",
+    "MeasureDiscrimination/ProductDiscrimination.lean": "617c96799fbf2e5e9311364cd358a2a969abb044b3f691c921a273a85434b979",
+    "MeasureDiscrimination.lean": "e605a15db57668e1d8ef49a420411e588712d75bea0d7fba04b7c1f488fc5274",
+    "MeasureDiscriminationExamples/Basic.lean": "1a99271cc482dbfc08dc9cfd9fea847e3ff932691ef1230923a8110a6b8a4833",
+    "MeasureDiscriminationExamples.lean": "c271a93fe1cfbc2e08cf4b4282eb535c703d23b0684417e6e25ed39279b59d88"
+  },
+  "verification_program_sha256": "181bf4a9e2a0d6e94993472d727e5d0458c8fd105c79b9e8d1878a74a3e60262",
+  "verification_controls_sha256": "81279d4f6b9d4065f18a3d008d3c405b6f9c65d01f12563a6583d3ecdbe39b44",
+  "verification_manifest_sha256": "279421dedf1d90bdfe6daa690b487edc6b5ad3cda46fb9e3d1b2da61a097be4a",
+  "ci_workflow_sha256": "db6d67b8ffa70415f57bb212e70d395da72f4fd3629b1f28ef699099964e7b53",
+  "authored_module_count": 5,
+  "named_declaration_count": 19,
+  "full_linter_count": 16,
+  "named_transitive_axioms": {
+    "MeasureDiscrimination.map_withDensity_comp_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.absolutelyContinuous_map_iff_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.map_tilted_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_map_comp_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.klDiv_map_of_measurable_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_fst_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_snd_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_comp_fst_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_comp_snd_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.prod_absolutelyContinuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_prod": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.llr_prod": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.prod_absolutelyContinuous_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_prod_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.llr_prod_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.klDiv_duplicate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary_preserves_ac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary_cancels_llr": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "clean_build_scope": {
+    "new_git_clone": true,
+    "object_alternates": false,
+    "initial_authored_build_artifacts_absent": true,
+    "public_dependency_build_cache_reused": true,
+    "all_nine_dependency_tracked_bytes_and_modes_match_HEAD": true,
+    "all_nine_dependency_hidden_index_flags_absent": true,
+    "full_dependency_rebuild_claimed": false,
+    "newer_current_mathlib_compilation_claimed": false
+  },
+  "warning_policy": "Native panics, nonzero exits, warnings, errors and malformed/unrecognized JSON are fatal; all16 Mathlib linters on every authored module.",
+  "durable_verifier_controls": {
+    "status": "passed",
+    "unittest_methods": 7,
+    "command": "python3 -m unittest discover -s scripts -p 'test_*.py'",
+    "includes_actual_main_exit_zero_error_rejection": true
+  },
+  "stages": [
+    {
+      "name": "compiler-version",
+      "exit_code": 0
+    },
+    {
+      "name": "exact-build",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination-MeasurableLeftInverse.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination-ProductDiscrimination.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscriminationExamples-Basic.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscriminationExamples.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "axioms",
+      "exit_code": 0
+    }
+  ],
+  "combined_consumer": {
+    "status": "passed",
+    "source_sha256": "d47b0b37ac9d82e451579b4b528b3212efe2aba8276ebb5d663bc2021255f5c2",
+    "receipt_sha256": "82918a6c7cfede00c7e495c594a0bda441c4fd052b0276755d82bc0049c5a1b1",
+    "scope": "All three public roots and unique examples roots imported in one consumer using the pinned public dependencies only"
+  },
+  "resource_observations": {
+    "sampled_peak_tree_rss_bytes": 5988597760,
+    "memory_ceiling_bytes": 17179869184,
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "surviving_non_zombie_pids": []
+  },
+  "independent_review": "Independent repaired-helper controls passed; exact final-candidate verdict is retained separately with the final bundle manifest to avoid self-referential commit identities.",
+  "logs": {
+    "directory": "private-release-logs",
+    "representation": "Package/qualification absolute paths normalized in displayed diagnostics; original raw log hashes refer to preserved external receipts.",
+    "raw_sha256": {
+      "axioms.log": "6442a5430a8a623bac5590c3ebfda6653b55eb95be15d345d2bc26066332ea5f",
+      "compiler-version.log": "355a9a028f81641782d75d6e6b58dec70f29d2f61238a9e271690259d9bf5680",
+      "exact-build.log": "104fa9ca7f3516356e9bbbe5be4c6d7092a250a1404741e29b33ba077191f19c",
+      "lint-MeasureDiscrimination-MeasurableLeftInverse.lean.log": "a29b95721aed670799da86e8e3056028a21e534d2124e822b477c9229ba85b15",
+      "lint-MeasureDiscrimination-ProductDiscrimination.lean.log": "7943312ff617ca86d45d4953a06fca139d5cd100e2f7591abac1484d31508176",
+      "lint-MeasureDiscrimination.lean.log": "5da6b30fafb82ecda48d68de7711c06b9634728adf3c1474b5baecca8d5d3366",
+      "lint-MeasureDiscriminationExamples-Basic.lean.log": "3cdd07ea2bb923e22cf5ea9da3c89392687cc582e4dc08250c2355aac03938f3",
+      "lint-MeasureDiscriminationExamples.lean.log": "7583007612c05156dbcb9e087066b6a1693b2832485191226aef971a1e43efb8",
+      "verifier-controls.log": "39bc6aa708c3383df2b4bc65f7c1cecb82e2e96458ffefab541f3a7985d3be7d",
+      "combined-usage.log": "4cb6d503542e2ee7ec63026ce7113b57334fa637d08a4158b3dc834cdc483d3a"
+    },
+    "raw_native_qualification_sha256": "82c618cea7186e31472b7f7f3c2ddc9a607b5ef02025cdf26691d35113ac8cee"
+  },
+  "hosted_ci": {
+    "status": "never_executed",
+    "reason": "Private repository creation remains blocked; no remote repository or hosted run claimed."
+  },
+  "release_status": "Private inspection preparation only. No public release, Mathlib acceptance, external specialist approval, or upstream submission.",
+  "receipt_commit_scope": "Subsequent commits add only documentation/log receipts; mathematical sources, verifier code and pins must match qualified identities above."
+}
