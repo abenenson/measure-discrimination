@@ -10,6 +10,9 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
+if not __debug__:
+    raise SystemExit('Verification requires enabled Python assertions; omit -O/PYTHONOPTIMIZE.')
+
 
 def uncomment(source):
     """Erase nested Lean comments and strings while preserving command line positions."""
@@ -85,6 +88,59 @@ def declarations(source):
     return names
 
 
+
+def check_diagnostics(output, *, json_mode=False):
+    """Fail closed on native/JSON diagnostics, including erroneous zero-exit output."""
+    def check_text(text):
+        assert 'PANIC' not in text and not re.search(r'(?im)\bpanic:', text), 'Native panic'
+        assert not re.search(r'(^|: )(?:warning|error):', text, re.M), text
+
+    check_text(output)
+    for raw in output.splitlines():
+        line = re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]', '', raw).strip()
+        if not line:
+            continue
+        check_text(line)
+        if not json_mode and not line.startswith('{'):
+            continue
+        try:
+            message = json.loads(line)
+        except json.JSONDecodeError as error:
+            raise AssertionError('Malformed diagnostic JSON: ' + line) from error
+        assert isinstance(message, dict), 'Unknown diagnostic JSON'
+        assert message.get('severity') in {'information', 'warning', 'error'}, message
+        assert isinstance(message.get('data'), str), message
+        assert message['severity'] == 'information', message
+        check_text(message['data'])
+
+
+def imported_modules(source):
+    """Read every ordinary import; unsupported header syntax fails closed."""
+    tokens = re.findall(r"[A-Za-z_][\w.']*|[^\s]", uncomment(source))
+    boundary = {'import', 'prelude', 'module', 'public', 'private', 'meta', 'open',
+                'namespace', 'section', 'noncomputable', 'universe', 'universes',
+                'variable', 'variables', 'export', 'attribute', 'set_option',
+                'theorem', 'lemma', 'def', 'abbrev', 'instance', 'structure', 'class',
+                'end', 'example', 'axiom', 'constant', 'opaque', 'inductive',
+                'syntax', 'macro', 'elab', 'initialize', '#', '@'}
+    modules = []
+    for index, token in enumerate(tokens):
+        if token != 'import':
+            continue
+        index += 1
+        if index < len(tokens) and tokens[index] == 'all':
+            index += 1
+        start = len(modules)
+        while index < len(tokens) and tokens[index] not in boundary:
+            name = tokens[index]
+            assert re.fullmatch(r"[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*",
+                                name), 'Unsupported import header: ' + name
+            modules.append(name)
+            index += 1
+        assert len(modules) > start, 'Empty or unsupported import header'
+    return modules
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--evidence-dir', type=Path)
@@ -110,10 +166,11 @@ def main():
         save()
         print(name, result.returncode, flush=True)
         assert result.returncode == 0, name
-        assert not re.search(r'(^|: )warning:', result.stdout, re.M), name + ': warning'
+        check_diagnostics(result.stdout)
         return result.stdout
 
     def messages(output):
+        check_diagnostics(output, json_mode=True)
         data = []
         for line in output.splitlines():
             try:
@@ -161,7 +218,7 @@ def main():
             assert not re.search(r'^\s*(?:@\[[^\]]*\]\s*)*(?:(?:private|protected|unsafe|noncomputable)\s+)*(?:axiom|constant)\b', code, re.M), relative
             assert all(len(line) <= 100 for line in source.splitlines()), relative
             assert source.count('Copyright (c)') == 1 and '/-!' in source, relative
-            for module in re.findall(r'^import\s+([\w.]+)', code, re.M):
+            for module in imported_modules(source):
                 assert module.startswith('Mathlib.') or module == config['root_module'] or \
                     module.startswith(config['root_module'] + '.') or \
                     module == config['examples_module'] or \
