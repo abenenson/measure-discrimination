@@ -122,3 +122,9 @@ on exit zero, check import parsing, and reject optimized Python that disables as
 Run them with `python3 -m unittest discover -s scripts -p 'test_*.py'`. The full verification
 command is `python3 scripts/verify.py`; it writes source hashes, stage results, and the named
 axiom audit. This existing machinery is retained without additional release gates.
+
+## Mathematical readiness qualification
+
+The [October 23 source qualification](readiness-qualification.json) records the shorter
+DPI-based proof and current source hashes. Earlier receipts remain historical. Hosted CI
+execution and independent review of the final private candidate are separate results.
