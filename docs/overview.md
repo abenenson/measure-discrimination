@@ -15,6 +15,41 @@ hypotheses are retained exactly where the relevant theorem requires them. Densit
 and log-likelihood identities are almost-everywhere statements, not pointwise identities.
 No general KL product-additivity theorem or arbitrary lossy-map invariance is advertised.
 
+## Mathematical dependency
+
+The finite-measure KL invariance theorem is a corollary of the pinned Mathlib
+`InformationTheory.klDiv_map_le`, applied to a measurable encoder and its measurable decoder.
+The [pinned-source audit](overlap-audit.md) records its exact assumptions, maps each utility
+API to the existing foundations, and identifies bounded candidates for upstream discussion.
+The density and tilting transport lemmas do not depend on deriving KL through densities.
+
+`ORIGIN.json` is historical extraction evidence: its transformations and hashes describe the
+initial extracted files, not a claim that current source bytes remain identical. The original
+license and notices are retained; subsequent changes, including the DPI proof refactoring,
+are recorded in Git history.
+
+## Hypotheses and interpretation
+
+All left-inverse results assume measurable `f` and `g` and `Function.LeftInverse g f`.
+Density transport only adds a measurable nonnegative extended-real density, with no
+finiteness hypothesis on its base measure. Absolute-continuity transport also needs no
+finiteness assumption. Radon–Nikodym transport assumes both measures finite and `μ ≪ ν`;
+its equality holds almost everywhere under `ν.map f`. KL invariance only assumes finite
+measures and takes values in `ℝ≥0∞`.
+
+Tilting transport assumes a finite base measure and a measurable real potential. It does
+not assume exponential integrability: it uses Mathlib's total definition of `Measure.tilted`,
+which yields the zero measure when the exponential is not integrable. Thus this theorem
+alone does not assert that the tilted measure is a probability law.
+
+Product density factorization assumes all four measures sigma-finite and both marginal
+absolute-continuity relations; its equality is almost everywhere under the reference product.
+General product log-likelihood addition assumes all four measures are probability measures
+and the same absolute-continuity relations; its equality is under the law product. The
+common-right-factor density and log-likelihood results only assume sigma-finiteness of the
+three measures and `μ ≪ ν`. The projection conveniences retain the explicit s-finiteness
+and probability hypotheses in their source signatures.
+
 ## Organization
 
 - `MeasurableLeftInverse`: measurable decoding, density, tilting and KL transport.
@@ -74,3 +109,16 @@ per-file Apache notices and ORIGIN hashes. Its additional implemented gates are 
 builds, all16 source linters, the explicit transitive axiom ledger, durable verifier rejection
 controls and always-retained CI evidence configuration. No precedent was modified or requalified.
 The supported pair remains Lean4.34.1/d13f23b; earlier-pair compatibility is not inferred.
+
+## Local evidence and private preparation
+
+The historical qualification receipts are [the October 17 qualification](qualification.json)
+and [the October 22 private-release qualification](private-release-qualification.json), with
+retained logs beside them. They describe their recorded source identities and do not certify
+later edits. A fresh run writes a separate evidence directory and keeps failures.
+
+The verifier's seven Python regression controls reject native panics and malformed/error JSON
+on exit zero, check import parsing, and reject optimized Python that disables assertions.
+Run them with `python3 -m unittest discover -s scripts -p 'test_*.py'`. The full verification
+command is `python3 scripts/verify.py`; it writes source hashes, stage results, and the named
+axiom audit. This existing machinery is retained without additional release gates.

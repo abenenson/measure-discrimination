@@ -3,7 +3,7 @@ Copyright (c) 2026 Adam Benenson. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Adam Benenson
 -/
-import Mathlib.InformationTheory.KullbackLeibler.Basic
+import Mathlib.InformationTheory.KullbackLeibler.DataProcessing
 import Mathlib.MeasureTheory.Integral.Lebesgue.Map
 
 /-!
@@ -12,6 +12,8 @@ import Mathlib.MeasureTheory.Integral.Lebesgue.Map
 This file proves that a measurable encoding with a measurable left inverse preserves absolute
 continuity, Radon--Nikodym derivatives, and Kullback--Leibler divergence. Unlike a measurable
 embedding argument, the proofs do not require the encoded range to be measurable.
+KL invariance specializes Mathlib's data-processing inequality in both directions; the density
+and tilting transport lemmas remain useful independently of that consequence.
 
 ## Main results
 
@@ -111,25 +113,18 @@ theorem rnDeriv_map_comp_of_leftInverse (μ ν : Measure α)
       (Measure.measurable_rnDeriv _ _) hleft,
     Measure.withDensity_rnDeriv_eq _ _ hμν]
 
-/-- KL divergence is invariant under a measurable map with a measurable left inverse. -/
+/-- KL divergence of finite measures is invariant under a measurable map with a measurable left
+inverse. Apply Mathlib's data-processing inequality to the encoder and decoder; no absolute
+continuity or log-likelihood integrability assumption is needed. -/
 theorem klDiv_map_of_measurable_leftInverse (μ ν : Measure α)
     [IsFiniteMeasure μ] [IsFiniteMeasure ν]
     (hf : Measurable f) (hg : Measurable g) (hleft : Function.LeftInverse g f) :
     klDiv (μ.map f) (ν.map f) = klDiv μ ν := by
   let : IsFiniteMeasure (μ.map f) := Measure.isFiniteMeasure_map μ f
   let : IsFiniteMeasure (ν.map f) := Measure.isFiniteMeasure_map ν f
-  rw [klDiv_eq_lintegral_klFun, klDiv_eq_lintegral_klFun]
-  by_cases hμν : μ ≪ ν
-  · rw [ite_eq_left hμν,
-      ite_eq_left ((absolutelyContinuous_map_iff_of_leftInverse μ ν hf hg hleft).mpr hμν),
-      lintegral_map (by fun_prop) hf]
-    apply lintegral_congr_ae
-    have hrn := ae_of_ae_map hf.aemeasurable
-      (rnDeriv_map_comp_of_leftInverse μ ν hf hg hleft hμν)
-    filter_upwards [hrn] with point hpoint
-    rw [hpoint]
-    simp only [Function.comp_apply, hleft point]
-  · rw [ite_eq_right hμν,
-      ite_eq_right ((absolutelyContinuous_map_iff_of_leftInverse μ ν hf hg hleft).not.mpr hμν)]
+  refine le_antisymm (klDiv_map_le μ ν hf) ?_
+  have hcomp : g ∘ f = id := funext hleft
+  simpa only [Measure.map_map hg hf, hcomp, Measure.map_id] using
+    klDiv_map_le (μ.map f) (ν.map f) hg
 
 end MeasureDiscrimination

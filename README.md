@@ -1,90 +1,67 @@
 # measure-discrimination
 
-Lossless measurable encodings and product discrimination, formalized in Lean with Mathlib only.
+A small Lean utility library for lossless measurable encodings and product likelihoods,
+built on Mathlib.
 
-Private preparation. Local qualification and its exact source identities are recorded
-in `docs/qualification.json` (historical Oct17) and `docs/private-release-qualification.json`
-when the refreshed run is sealed. Hosted CI execution is a separate result;
-no hosted pass or public release is claimed.
+For measurable `f : α → β` and `g : β → α` with `g ∘ f = id`, the library provides:
 
-## Mathematical scope
+- preservation and reflection of absolute continuity;
+- transport of measurable densities, and of exponential tilting for finite measures;
+- almost-everywhere Radon–Nikodym transport for finite measures;
+- `klDiv (μ.map f) (ν.map f) = klDiv μ ν` for finite measures.
 
-Two independent, Mathlib-only measure-theoretic modules share one purpose: transport
-actual measure discrimination through explicit measurable constructions.
+The KL equality applies Mathlib's data-processing inequality in both directions. It needs
+neither absolute continuity nor integrable log likelihoods; a measurable range of `f` is
+also unnecessary. The contribution is a convenient left-inverse API, rather than a new
+KL invariance principle. See the [pinned-source comparison](docs/overlap-audit.md).
 
-`MeasurableLeftInverse` proves preservation and reflection of absolute continuity,
-density transport, compatibility with exponential tilting, and exact KL invariance
-under a measurable encoder with a measurable left inverse. A measurable encoded
-range is not an assumption. KL invariance here assumes finite measures.
+For products, the library packages absolute continuity, almost-everywhere density
+factorization, addition of log-likelihood ratios, and cancellation of a common independent
+right factor. Density factorization assumes sigma-finite measures and marginal absolute
+continuity. General log-likelihood addition is stated for probability measures; common-factor
+cancellation only requires sigma-finiteness and absolute continuity. These are
+almost-everywhere identities. General KL product additivity is outside the package's scope.
 
-`ProductDiscrimination` proves product absolute continuity, almost-everywhere
-Radon–Nikodym factorization and log-likelihood addition, plus cancellation of a common
-independent right factor. Sigma-finiteness, probability and absolute-continuity
-hypotheses are retained exactly where the relevant theorem requires them. Density
-and log-likelihood identities are almost-everywhere statements, not pointwise identities.
-No general KL product-additivity theorem or arbitrary lossy-map invariance is advertised.
+## Example
 
-## Build and verification
+Duplicate an observation without any measurable-diagonal assumption:
 
-The supported tested pair is Lean 4.34.1 and Mathlib commit
-`d13f23b723b8a846827a245b89c10fc7d3f11612`. Every transitive dependency is locked in
-`lake-manifest.json`. The author's earlier libraries currently pin Lean 4.29.1;
-compatibility with that older pair has not been tested or claimed here.
+```lean
+import MeasureDiscrimination
+
+open MeasureTheory InformationTheory
+
+example {α : Type*} [MeasurableSpace α]
+    (μ ν : Measure α) [IsFiniteMeasure μ] [IsFiniteMeasure ν] :
+    klDiv (μ.map fun x ↦ (x, x)) (ν.map fun x ↦ (x, x)) = klDiv μ ν :=
+  MeasureDiscrimination.klDiv_map_of_measurable_leftInverse μ ν
+    (measurable_id.prodMk measurable_id) measurable_fst (fun _ ↦ rfl)
+```
+
+The built, opt-in [examples](MeasureDiscriminationExamples/Basic.lean) also attach an
+independent fair Boolean observation and show its cancellation from the log-likelihood ratio.
+
+## Build
+
+The supported pair is **Lean 4.34.1** and **Mathlib
+`d13f23b723b8a846827a245b89c10fc7d3f11612`**. Dependencies are locked in
+`lake-manifest.json`; compatibility with other versions has not been established.
 
 ```bash
 lake exe cache get
 lake --rehash --wfail build
+python3 -m unittest discover -s scripts -p 'test_*.py'
 python3 scripts/verify.py
 ```
 
-The verifier builds every authored module and example, re-elaborates
-each source with all 16 linters including theorem documentation, rejects warnings,
-checks declaration coverage, and audits transitive axioms of every explicit public
-name. Only `Classical.choice`, `Quot.sound` and `propext` are allowed. It rejects
-`sorry`, `admit`, explicit custom axioms and imports outside this package/Mathlib.
-Logs and receipts go into a new `verification-artifacts` directory per run; failures
-are retained. It uses Python's standard library and no private verification tooling.
+Verification rebuilds all authored sources and examples, runs all 16 source linters with
+warnings fatal, checks public declaration coverage, and audits transitive axioms against
+`Classical.choice`, `Quot.sound`, and `propext`. See [verification and qualification
+notes](docs/overview.md) for the contract and historical local evidence. This remains private
+preparation; hosted CI and a public release are separate outcomes.
 
-## Usage
+## License and provenance
 
-```lean
-import MeasureDiscrimination
--- Examples are opt-in:
-import MeasureDiscriminationExamples
-```
-
-## Modules
-
-- `MeasurableLeftInverse`: measurable decoding, density, tilting and KL transport.
-- `ProductDiscrimination`: product densities, log likelihoods and common-factor cancellation.
-
-## Checked example
-
-`MeasureDiscriminationExamples.Basic` proves KL invariance for the duplicate encoding `x ↦ (x, x)`
-on an arbitrary measurable space, without a measurable-diagonal premise. It then
-attaches an independent fair Boolean auxiliary and proves absolute-continuity
-preservation and actual log-likelihood cancellation.
-
-## Provenance and license
-
-Copyright 2026 Adam Benenson. Apache 2.0, matching the explicit notices retained in
-the extracted mathematical files. See [LICENSE](LICENSE), [NOTICE](NOTICE), and
-[ORIGIN.json](ORIGIN.json) for file identities and the limited extraction provenance.
-No surrounding repository or unrelated source is assigned a license here.
-
-[API and verification notes](docs/overview.md) describe the package boundary and
-qualification process. These are formalizations of the scoped mathematical results;
-no application-specific physical or empirical implication is claimed.
-
-## Private inspection update
-
-[Current overlap audit](docs/overlap-audit.md) records the source-level Mathlib/external comparison
-and limits novelty/upstream claims. The original mathematical files and pins are retained.
-Verifier hardening rejects native panics and malformed/error JSON even on exit zero, reads every
-ordinary import and fails closed on unsupported import headers, and refuses optimized Python
-that would disable assertions. Seven durable Python regression controls run before native CI;
-CI is configured to retain verification evidence using a pinned upload action. Configuration
-is not a hosted execution result. No public release or automatic upstream submission is enabled.
-
-Run the controls with `python3 -m unittest discover -s scripts -p 'test_*.py'`.
-The full verification command remains `python3 scripts/verify.py`.
+Copyright 2026 Adam Benenson. Apache 2.0. [LICENSE](LICENSE), [NOTICE](NOTICE), and
+[ORIGIN.json](ORIGIN.json) retain the original extraction provenance; the origin hashes describe
+the historical extracted files. Subsequent changes are recorded in Git history.
