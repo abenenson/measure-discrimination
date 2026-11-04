@@ -141,6 +141,75 @@ def imported_modules(source):
     return modules
 
 
+def clear_authored_artifacts(root, source_files):
+    """Force authored recompilation without deleting or traversing dependency caches."""
+    library = root / '.lake' / 'build' / 'lib' / 'lean'
+    suffixes = ('.olean', '.ilean', '.ir', '.trace')
+    removed = []
+    for relative in source_files:
+        source = Path(relative)
+        assert not source.is_absolute() and '..' not in source.parts
+        assert source.suffix == '.lean', relative
+        module = library / source.with_suffix('')
+        current = root
+        for part in module.parent.relative_to(root).parts:
+            current = current / part
+            assert not current.is_symlink(), 'Linked authored artifact directory: ' + str(current)
+            assert not current.exists() or current.is_dir(), str(current)
+        if not module.parent.is_dir():
+            continue
+        for artifact in sorted(module.parent.iterdir()):
+            if not any(artifact.name == module.name + suffix or
+                       artifact.name.startswith(module.name + suffix + '.')
+                       for suffix in suffixes):
+                continue
+            assert artifact.is_file() or artifact.is_symlink(), str(artifact)
+            artifact.unlink()
+            removed.append(str(artifact.relative_to(root)))
+    return removed
+
+
+def manifest_dependencies(packages):
+    """Read supported single-component Lake names without changing package paths or pins."""
+    dependencies = {}
+    for entry in packages:
+        serialized = entry['name']
+        assert isinstance(serialized, str), 'Non-string manifest package name'
+        name = (serialized[1:-1] if serialized.startswith('«') and serialized.endswith('»')
+                else serialized)
+        assert re.fullmatch(r'[A-Za-z_][A-Za-z0-9_-]*', name), \
+            'Unsupported manifest package name: ' + serialized
+        assert name not in dependencies, 'Duplicate manifest package name: ' + name
+        dependencies[name] = entry
+    return dependencies
+
+
+def import_roots(config):
+    """Allow extra library roots only for explicitly pinned public dependencies."""
+    roots = [config['root_module'], config['examples_module']]
+    modules = config.get('dependency_modules', {})
+    assert isinstance(modules, dict), 'dependency_modules must map dependency names to roots'
+    for name, additions in modules.items():
+        assert name in config['public_dependencies'], 'Unpinned dependency module: ' + name
+        pin = config['public_dependencies'][name]
+        assert re.fullmatch(r'[0-9a-f]{40}', pin.get('rev', '')), name
+        assert re.fullmatch(r'https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+',
+                            pin.get('url', '')), name
+        assert isinstance(additions, list) and additions, name
+        roots.extend(additions)
+    for name in roots:
+        assert isinstance(name, str) and re.fullmatch(
+            r"[A-Za-z_][A-Za-z0-9_']*(?:\.[A-Za-z_][A-Za-z0-9_']*)*", name), name
+        assert name != 'Mathlib', 'Use focused Mathlib imports'
+    return roots
+
+
+def allowed_import(module, roots):
+    """Recognize focused Mathlib imports and the declared library module roots."""
+    return module.startswith('Mathlib.') or any(
+        module == root or module.startswith(root + '.') for root in roots)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--evidence-dir', type=Path)
@@ -195,7 +264,7 @@ def main():
         assert toolchain == 'leanprover/lean4:v4.34.1' and 'version 4.34.1,' in version
         record['compiler_version'] = version
         manifest = json.loads((root / 'lake-manifest.json').read_text())
-        dependencies = {p['name']: p for p in manifest['packages']}
+        dependencies = manifest_dependencies(manifest['packages'])
         assert set(dependencies) == set(config['public_dependencies'])
         record['dependency_revisions'] = {}
         for name, expected in config['public_dependencies'].items():
@@ -208,6 +277,7 @@ def main():
                 text=True).strip()
             assert head == expected['rev'], name
             record['dependency_revisions'][name] = head
+        roots = import_roots(config)
         names = []
         for relative in config['source_files']:
             path = root / relative
@@ -219,13 +289,12 @@ def main():
             assert all(len(line) <= 100 for line in source.splitlines()), relative
             assert source.count('Copyright (c)') == 1 and '/-!' in source, relative
             for module in imported_modules(source):
-                assert module.startswith('Mathlib.') or module == config['root_module'] or \
-                    module.startswith(config['root_module'] + '.') or \
-                    module == config['examples_module'] or \
-                    module.startswith(config['examples_module'] + '.'), (relative, module)
+                assert allowed_import(module, roots), (relative, module)
             names.extend(declarations(source))
         assert names and len(names) == len(set(names))
         assert names == config['declarations'], 'Declaration manifest differs from actual sources'
+        record['removed_authored_artifacts'] = clear_authored_artifacts(
+            root, config['source_files'])
         save()
         targets = ['+' + str(Path(p).with_suffix('')).replace('/', '.') + ':olean'
                    for p in config['source_files']]

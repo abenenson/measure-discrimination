@@ -62,7 +62,9 @@ The only external package requirement is pinned Mathlib and its public dependenc
 
 ## Qualification contract
 
-A fresh authored-artifact build must pass with warnings fatal. Full lint recompiles
+A fresh authored-artifact build must pass with warnings fatal. The verifier removes only
+the manifest-owned Lean artifacts and their sidecars before building; it retains external
+dependency caches and rejects linked artifact directories. Full lint recompiles
 the original source contents under the same module identity, rather than linting
 only an import of cached declarations. All explicit public declaration names are
 listed in `verification.json`, checked against the source and audited transitively.
@@ -110,21 +112,32 @@ builds, all16 source linters, the explicit transitive axiom ledger, durable veri
 controls and always-retained CI evidence configuration. No precedent was modified or requalified.
 The supported pair remains Lean4.34.1/d13f23b; earlier-pair compatibility is not inferred.
 
-## Local evidence and private preparation
+## Verification evidence
+
+The [November 4 source qualification](release-qualification.json) records a fresh authored
+build, all 16 linters on each of the five sources, all 19 named public transitive axiom
+audits, and fourteen isolated Python regression controls. The receipt binds source, configuration,
+verifier and retained-log hashes, with resource receipts alongside the logs. A separate source
+review found no blocking issues in the mathematical scope, examples, provenance or verifier.
+This local evidence does not establish a hosted CI result, publication or upstream acceptance.
 
 The historical qualification receipts are [the October 17 qualification](qualification.json)
 and [the October 22 private-release qualification](private-release-qualification.json), with
 retained logs beside them. They describe their recorded source identities and do not certify
-later edits. A fresh run writes a separate evidence directory and keeps failures.
+later edits. The [initial November 4 replay](release-initial-logs/qualification.json) is also
+retained with its tooling identity; the final qualification supersedes its verifier version.
+A fresh run writes a separate evidence directory and keeps failures.
 
-The verifier's seven Python regression controls reject native panics and malformed/error JSON
-on exit zero, check import parsing, and reject optimized Python that disables assertions.
+The verifier's Python regression controls reject native panics and malformed/error JSON
+on exit zero, check import parsing and pinned dependency module roots, reject optimized Python
+that disables assertions, and ensure stale authored artifacts are removed before an exact
+build without touching external caches. Linked artifact directories are refused.
 Run them with `python3 -m unittest discover -s scripts -p 'test_*.py'`. The full verification
 command is `python3 scripts/verify.py`; it writes source hashes, stage results, and the named
-axiom audit. This existing machinery is retained without additional release gates.
+axiom audit.
 
 ## Mathematical readiness qualification
 
 The [October 23 source qualification](readiness-qualification.json) records the shorter
-DPI-based proof and current source hashes. Earlier receipts remain historical. Hosted CI
-execution and independent review of the final private candidate are separate results.
+DPI-based proof and its source hashes. Earlier receipts remain historical. Hosted CI
+execution and independent source review are separate results.

@@ -1,0 +1,11 @@
+✔ [3071/3083] Built MeasureDiscrimination.ProductDiscrimination (4.9s)
+✔ [3073/3083] Built Mathlib.MeasureTheory.Function.ConditionalLExpectation (5.2s)
+✔ [3075/3089] Built Mathlib.MeasureTheory.Function.ConditionalExpectation.LebesgueBochner (3.8s)
+✔ [3078/3100] Built Mathlib.InformationTheory.KullbackLeibler.ChainRule (4.3s)
+✔ [3095/3100] Built Mathlib.MeasureTheory.Function.ConditionalExpectation.RadonNikodym (2.8s)
+✔ [3096/3100] Built Mathlib.InformationTheory.KullbackLeibler.DataProcessing (3.6s)
+✔ [3097/3100] Built MeasureDiscrimination.MeasurableLeftInverse (3.5s)
+✔ [3098/3100] Built MeasureDiscrimination (3.1s)
+✔ [3099/3100] Built MeasureDiscriminationExamples.Basic (2.8s)
+✔ [3100/3100] Built MeasureDiscriminationExamples (2.7s)
+Build completed successfully (3100 jobs).

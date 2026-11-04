@@ -1,0 +1,313 @@
+{
+  "status": "passed",
+  "stages": [
+    {
+      "name": "compiler-version",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "exact-build",
+      "command": [
+        "lake",
+        "--rehash",
+        "--wfail",
+        "build",
+        "+MeasureDiscrimination.MeasurableLeftInverse:olean",
+        "+MeasureDiscrimination.ProductDiscrimination:olean",
+        "+MeasureDiscrimination:olean",
+        "+MeasureDiscriminationExamples.Basic:olean",
+        "+MeasureDiscriminationExamples:olean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination-MeasurableLeftInverse.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-j2",
+        "--json",
+        "--root=/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/lint-sources",
+        "/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/lint-sources/MeasureDiscrimination/MeasurableLeftInverse.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination-ProductDiscrimination.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-j2",
+        "--json",
+        "--root=/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/lint-sources",
+        "/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/lint-sources/MeasureDiscrimination/ProductDiscrimination.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-j2",
+        "--json",
+        "--root=/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/lint-sources",
+        "/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/lint-sources/MeasureDiscrimination.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscriminationExamples-Basic.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-j2",
+        "--json",
+        "--root=/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/lint-sources",
+        "/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/lint-sources/MeasureDiscriminationExamples/Basic.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscriminationExamples.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-j2",
+        "--json",
+        "--root=/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/lint-sources",
+        "/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/lint-sources/MeasureDiscriminationExamples.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "axioms",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-j2",
+        "--json",
+        "/workspace/verification-open-source/measure-discrimination/verification-artifacts/release-20261104-2/axioms.lean"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "source_sha256": {
+    "MeasureDiscrimination/MeasurableLeftInverse.lean": "5d1dea2d439c4072cccdd4d9c455e2c372ea99298d2d2a4cf6ef9ac1f6e12f75",
+    "MeasureDiscrimination/ProductDiscrimination.lean": "617c96799fbf2e5e9311364cd358a2a969abb044b3f691c921a273a85434b979",
+    "MeasureDiscrimination.lean": "e605a15db57668e1d8ef49a420411e588712d75bea0d7fba04b7c1f488fc5274",
+    "MeasureDiscriminationExamples/Basic.lean": "1a99271cc482dbfc08dc9cfd9fea847e3ff932691ef1230923a8110a6b8a4833",
+    "MeasureDiscriminationExamples.lean": "c271a93fe1cfbc2e08cf4b4282eb535c703d23b0684417e6e25ed39279b59d88"
+  },
+  "axioms": {
+    "MeasureDiscrimination.map_withDensity_comp_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.absolutelyContinuous_map_iff_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.map_tilted_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_map_comp_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.klDiv_map_of_measurable_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_fst_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_snd_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_comp_fst_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_comp_snd_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.prod_absolutelyContinuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_prod": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.llr_prod": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.prod_absolutelyContinuous_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_prod_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.llr_prod_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.klDiv_duplicate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary_preserves_ac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary_cancels_llr": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "scope": "Local exact-source qualification. Hosted CI, repository visibility, and upstream acceptance are separate outcomes.",
+  "compiler_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+  "dependency_revisions": {
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+    "plausible": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+    "LeanSearchClient": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+    "importGraph": "e928b72544873815af278d38681b31c0293588e3",
+    "proofwidgets": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+    "aesop": "355695d523e41d0554926416cba2a2b3544fbbc9",
+    "Qq": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+    "batteries": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+    "Cli": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204"
+  },
+  "removed_authored_artifacts": [
+    ".lake/build/lib/lean/MeasureDiscrimination/MeasurableLeftInverse.ilean",
+    ".lake/build/lib/lean/MeasureDiscrimination/MeasurableLeftInverse.ilean.hash",
+    ".lake/build/lib/lean/MeasureDiscrimination/MeasurableLeftInverse.olean",
+    ".lake/build/lib/lean/MeasureDiscrimination/MeasurableLeftInverse.olean.hash",
+    ".lake/build/lib/lean/MeasureDiscrimination/MeasurableLeftInverse.trace",
+    ".lake/build/lib/lean/MeasureDiscrimination/ProductDiscrimination.ilean",
+    ".lake/build/lib/lean/MeasureDiscrimination/ProductDiscrimination.ilean.hash",
+    ".lake/build/lib/lean/MeasureDiscrimination/ProductDiscrimination.olean",
+    ".lake/build/lib/lean/MeasureDiscrimination/ProductDiscrimination.olean.hash",
+    ".lake/build/lib/lean/MeasureDiscrimination/ProductDiscrimination.trace",
+    ".lake/build/lib/lean/MeasureDiscrimination.ilean",
+    ".lake/build/lib/lean/MeasureDiscrimination.ilean.hash",
+    ".lake/build/lib/lean/MeasureDiscrimination.olean",
+    ".lake/build/lib/lean/MeasureDiscrimination.olean.hash",
+    ".lake/build/lib/lean/MeasureDiscrimination.trace",
+    ".lake/build/lib/lean/MeasureDiscriminationExamples/Basic.ilean",
+    ".lake/build/lib/lean/MeasureDiscriminationExamples/Basic.ilean.hash",
+    ".lake/build/lib/lean/MeasureDiscriminationExamples/Basic.olean",
+    ".lake/build/lib/lean/MeasureDiscriminationExamples/Basic.olean.hash",
+    ".lake/build/lib/lean/MeasureDiscriminationExamples/Basic.trace",
+    ".lake/build/lib/lean/MeasureDiscriminationExamples.ilean",
+    ".lake/build/lib/lean/MeasureDiscriminationExamples.ilean.hash",
+    ".lake/build/lib/lean/MeasureDiscriminationExamples.olean",
+    ".lake/build/lib/lean/MeasureDiscriminationExamples.olean.hash",
+    ".lake/build/lib/lean/MeasureDiscriminationExamples.trace"
+  ],
+  "full_linter_count": 16,
+  "named_declaration_count": 19,
+  "recorded_utc": "2026-11-04T05:38:17.721363+00:00",
+  "qualification_started_utc": "2026-11-04T05:37:00Z",
+  "base_commit": "314c75b6f912f42ec12c5abaea8b35170e7bc2a9",
+  "qualified_identity": "Exact input SHA-256 values below; base commit is historical context, not the modified source identity.",
+  "input_sha256": {
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.lean": "d0f54bfccfc42d90c7e32f4fe249c4e66e65d90cbcc89dddbe231c374ed8b595",
+    "lake-manifest.json": "14f820fc83592ad04f22adf216e6086f38c601d9fa1087cb4c39005c3360ee35",
+    "verification.json": "279421dedf1d90bdfe6daa690b487edc6b5ad3cda46fb9e3d1b2da61a097be4a",
+    "scripts/verify.py": "e141b204b2afd540d8ed799745abb4c21ae27539432675c3c0c11183384050e3",
+    "scripts/test_verify.py": "7da3ed1a0ad1093d8d703c66bf371c67bea9fbd71b0ccd29284b0048a7a70475",
+    ".github/workflows/lean.yml": "db6d67b8ffa70415f57bb212e70d395da72f4fd3629b1f28ef699099964e7b53",
+    "MeasureDiscrimination/MeasurableLeftInverse.lean": "5d1dea2d439c4072cccdd4d9c455e2c372ea99298d2d2a4cf6ef9ac1f6e12f75",
+    "MeasureDiscrimination/ProductDiscrimination.lean": "617c96799fbf2e5e9311364cd358a2a969abb044b3f691c921a273a85434b979",
+    "MeasureDiscrimination.lean": "e605a15db57668e1d8ef49a420411e588712d75bea0d7fba04b7c1f488fc5274",
+    "MeasureDiscriminationExamples/Basic.lean": "1a99271cc482dbfc08dc9cfd9fea847e3ff932691ef1230923a8110a6b8a4833",
+    "MeasureDiscriminationExamples.lean": "c271a93fe1cfbc2e08cf4b4282eb535c703d23b0684417e6e25ed39279b59d88"
+  },
+  "approved_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "verifier_controls": {
+    "status": "passed",
+    "methods": 14,
+    "log": "release-logs/verifier-controls.log",
+    "scope": "Isolated temporary-fixture controls, including stale authored artifact removal and quoted manifest package names with collision rejection."
+  },
+  "authored_build_evidence": "The final verifier removed 25 authored artifacts and sidecars before the exact build. All five authored modules are explicitly Built in release-logs/exact-build.log. External caches were retained.",
+  "independent_source_review": {
+    "status": "passed",
+    "scope": "Separate read-only review of theorem hypotheses, examples, provenance, licensing, CI configuration, verifier semantics, and final single-component manifest-name parser; no blocking findings."
+  },
+  "raw_qualification_sha256": "fdfbe2360f3c1217e53a97b45d36fdf9ab9b08c7ad2963d376f14a424c72b8a7",
+  "retained_log_sha256": {
+    "release-logs/axioms.log": "25aa79192be0ea21f568459ce41f52f4e46c5671410bea8fa4c94b0f20f5e501",
+    "release-logs/compiler-version.log": "355a9a028f81641782d75d6e6b58dec70f29d2f61238a9e271690259d9bf5680",
+    "release-logs/disk.json": "ffa1478725feea58e922b8d867cfca98fc1525be8a0176e8ceee9ec1ac11eca8",
+    "release-logs/exact-build.log": "ac6e61e9d566c99c8f32378ecfce7ebc3937967610d166e6bd4ddc8376702733",
+    "release-logs/lint-MeasureDiscrimination-MeasurableLeftInverse.lean.log": "59c79d714cd3f904886936b4a5770c6f5b1b8e3542159a5d6d4c7cbb9d266631",
+    "release-logs/lint-MeasureDiscrimination-ProductDiscrimination.lean.log": "951bbd0ee38b6061c8d1473324b156055fbf3aebb0ed718f345157c82c345f72",
+    "release-logs/lint-MeasureDiscrimination.lean.log": "948cda3ac76c3c5211d79704eb96968488f3b3ac2d64606c3caaa19a9d13b166",
+    "release-logs/lint-MeasureDiscriminationExamples-Basic.lean.log": "e6a7f5d67b9c890a674ec8cbcfea8fcf52dc7a308bc5dde370bd58d2d7ca4d13",
+    "release-logs/lint-MeasureDiscriminationExamples.lean.log": "967b6858964f47ce3bdd2d386fadfec4b26ed81a0cf0db50adba8758adf5b32d",
+    "release-logs/qualification.json": "fdfbe2360f3c1217e53a97b45d36fdf9ab9b08c7ad2963d376f14a424c72b8a7",
+    "release-logs/resources.json": "bfdf84711ddbf3f80289123520fd1eeef9fca72169030dd5036d594ffcb34505",
+    "release-logs/verifier-controls.log": "64d2d2505d7def62728f616c969aa1c527bc2e5058f20dadd2f0766c78f3504f"
+  },
+  "resource_receipts": {
+    "resources": "release-logs/resources.json",
+    "disk": "release-logs/disk.json",
+    "seconds_limit": 900,
+    "memory_gib": 16,
+    "cpu_count": 2,
+    "exit_code": 0,
+    "surviving_non_zombie_pids": []
+  },
+  "historical_qualification": "Earlier qualification receipts and logs remain unchanged. The first November 4 run is retained in release-initial-logs and superseded by this final parser-qualified replay.",
+  "public_record_note": "Worker locations and origin metadata were normalized for publication. These retained records describe historical verification runs; normalization is not a new Lean build."
+}
