@@ -56,9 +56,10 @@ python3 scripts/verify.py
 
 Verification rebuilds all authored sources and examples, runs all 16 source linters with
 warnings fatal, checks public declaration coverage, and audits transitive axioms against
-`Classical.choice`, `Quot.sound`, and `propext`. See [verification and qualification
-notes](docs/overview.md) for the contract and historical local evidence. This remains private
-preparation; hosted CI and a public release are separate outcomes.
+`Classical.choice`, `Quot.sound`, and `propext`. Authored build artifacts are removed before
+the exact build; external dependency caches are retained. See [verification and qualification
+notes](docs/overview.md) for the contract and retained local evidence. Fresh verifier output
+and hosted CI results describe the source snapshot each actually checked.
 
 ## License and provenance
 

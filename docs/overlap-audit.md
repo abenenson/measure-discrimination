@@ -57,4 +57,5 @@ not submissions or promises of acceptance:
 The KL equality is a short corollary of data processing, and the absolute-continuity/product
 projection wrappers largely expose existing results. They do not justify a large independent
 upstream contribution claim. Any discussion should be one focused mathematical patch at a time.
-No upstream submission, external acceptance, or public release is part of this preparation.
+Repository visibility and release records establish publication status; local qualification
+does not establish a hosted run or upstream acceptance.

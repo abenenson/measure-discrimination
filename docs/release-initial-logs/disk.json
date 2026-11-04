@@ -1,0 +1,119 @@
+{
+  "phase": "measure-verify-1",
+  "command": [
+    "python3",
+    "scripts/verify.py",
+    "--evidence-dir",
+    "verification-artifacts/release-20261104"
+  ],
+  "cwd": "/workspace/sft-open-source/measure-discrimination",
+  "disk_floor_bytes": 8589934592,
+  "candidate_cap_bytes": 21474836480,
+  "cache_cap_bytes": 19327352832,
+  "cache_roots": [
+    "/workspace/sft-open-source/finite-markov-kernels/.lake",
+    "/workspace/sft-open-source/measure-discrimination/.lake",
+    "/workspace/sft-open-source/berge-maximum/.lake",
+    "/workspace/sft-open-source/finite-relative-entropy/.lake",
+    "/workspace/sft-open-source/finite-causal-control/.lake",
+    "/workspace/sft-open-source/fisher-information/.lake"
+  ],
+  "accounting_root": "/workspace/sft-open-source",
+  "accounting_scope": "actual-task-repo",
+  "before": {
+    "available_overlay_bytes": 31882231808,
+    "candidate_apparent_file_bytes": 34319769,
+    "cache_apparent_file_bytes": 32205288
+  },
+  "samples": [
+    {
+      "elapsed_seconds": 5.210725617999742,
+      "available_overlay_bytes": 31880556544,
+      "candidate_apparent_file_bytes": 35946239,
+      "cache_apparent_file_bytes": 33830013
+    },
+    {
+      "elapsed_seconds": 10.395378960000016,
+      "available_overlay_bytes": 31845158912,
+      "candidate_apparent_file_bytes": 37963235,
+      "cache_apparent_file_bytes": 35847009
+    },
+    {
+      "elapsed_seconds": 15.608830857999237,
+      "available_overlay_bytes": 31840698368,
+      "candidate_apparent_file_bytes": 38184944,
+      "cache_apparent_file_bytes": 36035066
+    },
+    {
+      "elapsed_seconds": 20.81138309399921,
+      "available_overlay_bytes": 31835652096,
+      "candidate_apparent_file_bytes": 38214711,
+      "cache_apparent_file_bytes": 36035066
+    },
+    {
+      "elapsed_seconds": 26.03115434999927,
+      "available_overlay_bytes": 31832973312,
+      "candidate_apparent_file_bytes": 40587515,
+      "cache_apparent_file_bytes": 38407870
+    },
+    {
+      "elapsed_seconds": 31.230205520999334,
+      "available_overlay_bytes": 31828017152,
+      "candidate_apparent_file_bytes": 45490082,
+      "cache_apparent_file_bytes": 43310437
+    },
+    {
+      "elapsed_seconds": 36.38038070199946,
+      "available_overlay_bytes": 31825518592,
+      "candidate_apparent_file_bytes": 47934969,
+      "cache_apparent_file_bytes": 45747809
+    },
+    {
+      "elapsed_seconds": 41.53925990099924,
+      "available_overlay_bytes": 31825502208,
+      "candidate_apparent_file_bytes": 47945277,
+      "cache_apparent_file_bytes": 45747809
+    },
+    {
+      "elapsed_seconds": 46.774972543999866,
+      "available_overlay_bytes": 31825473536,
+      "candidate_apparent_file_bytes": 47949889,
+      "cache_apparent_file_bytes": 45747809
+    },
+    {
+      "elapsed_seconds": 51.93702985099935,
+      "available_overlay_bytes": 31825461248,
+      "candidate_apparent_file_bytes": 47952012,
+      "cache_apparent_file_bytes": 45747809
+    }
+  ],
+  "started_utc": "2026-11-04T05:28:41Z",
+  "resource_guard_command": [
+    "/workspace/.cloud-tools/mcp-v2-venv/bin/python",
+    "/workspace/stigmergic-consciousness/omega-flow/lean/docs/operations/tooling/cloud/runtime/resource_guard.py",
+    "--seconds",
+    "900",
+    "--gib",
+    "16",
+    "--receipt",
+    "/workspace/sft-open-source/release-evidence/resources/measure-verify-1-resources.json",
+    "--",
+    "python3",
+    "scripts/verify.py",
+    "--evidence-dir",
+    "verification-artifacts/release-20261104"
+  ],
+  "reason": "completed",
+  "exit_code": 0,
+  "elapsed_seconds": 57.126977035999516,
+  "after": {
+    "available_overlay_bytes": 31825436672,
+    "candidate_apparent_file_bytes": 47964987,
+    "cache_apparent_file_bytes": 45747809
+  },
+  "peak_candidate_apparent_file_bytes": 47964987,
+  "peak_cache_apparent_file_bytes": 45747809,
+  "minimum_available_overlay_bytes": 31825436672,
+  "final_sample_included_in_extrema": true,
+  "final_bounds_problem": null
+}
