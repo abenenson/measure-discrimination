@@ -1,5 +1,7 @@
 # measure-discrimination
 
+[![Lean verification](https://github.com/abenenson/measure-discrimination/actions/workflows/lean.yml/badge.svg?branch=main)](https://github.com/abenenson/measure-discrimination/actions/workflows/lean.yml)
+
 A small Lean utility library for lossless measurable encodings and product likelihoods,
 built on Mathlib.
 
