@@ -64,5 +64,5 @@ and hosted CI results describe the source snapshot each actually checked.
 ## License and provenance
 
 Copyright 2026 Adam Benenson. Apache 2.0. [LICENSE](LICENSE), [NOTICE](NOTICE), and
-[ORIGIN.json](ORIGIN.json) retain the original extraction provenance; the origin hashes describe
-the historical extracted files. Subsequent changes are recorded in Git history.
+[ORIGIN.json](ORIGIN.json) record licensing and the initial public file inventory. The inventory
+hashes describe the initial public adaptation. Subsequent changes are recorded in Git history.

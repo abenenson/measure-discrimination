@@ -23,10 +23,9 @@ The [pinned-source audit](overlap-audit.md) records its exact assumptions, maps 
 API to the existing foundations, and identifies bounded candidates for upstream discussion.
 The density and tilting transport lemmas do not depend on deriving KL through densities.
 
-`ORIGIN.json` is historical extraction evidence: its transformations and hashes describe the
-initial extracted files, not a claim that current source bytes remain identical. The original
-license and notices are retained; subsequent changes, including the DPI proof refactoring,
-are recorded in Git history.
+`ORIGIN.json` records the initial public package paths and SHA-256 digests. The license and
+notices are retained; subsequent changes, including the DPI proof refactoring, are recorded
+in Git history. The inventory describes the initial public adaptation.
 
 ## Hypotheses and interpretation
 
@@ -107,7 +106,7 @@ Channel-capacity has concrete positive/counterexample modules; the other project
 scoped APIs, source checks and documentation rather than the same example layout.
 
 This package keeps a small public root, opt-in example imports, Mathlib-only dependencies,
-per-file Apache notices and ORIGIN hashes. Its additional implemented gates are exact-source
+per-file Apache notices and an initial public file inventory. Its additional implemented gates are exact-source
 builds, all16 source linters, the explicit transitive axiom ledger, durable verifier rejection
 controls and always-retained CI evidence configuration. No precedent was modified or requalified.
 The supported pair remains Lean4.34.1/d13f23b; earlier-pair compatibility is not inferred.
