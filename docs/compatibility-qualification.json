@@ -1,0 +1,173 @@
+{
+  "status": "passed",
+  "scope": "Fresh exact-source builds of all authored modules and examples, full source lint, complete named transitive axiom audit; local verification only",
+  "compiler_version": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "dependency_revisions": {
+    "mathlib": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+    "plausible": "dfa4f38190d07c37e315953e08b90fe2d95b3c24",
+    "LeanSearchClient": "d6b4c7be5be75ec4917c873ac50c756dc1436372",
+    "importGraph": "a41f0e9a4dea23188ea9cc1c41ac9f8bbafe0b93",
+    "proofwidgets": "df72b022e558978a1c50264cfc4d7fec86fa8e04",
+    "aesop": "4a174c490d8707121c4a9290800489f105d85e07",
+    "Qq": "dce0ad79c486cb1fb504af04f953c3466b0c6db8",
+    "batteries": "66e469188fe07963e5cf666c7d4433f45b8131c5",
+    "Cli": "c24fe6078c630e89b489bffe59b3e20ac30d12c8"
+  },
+  "source_sha256": {
+    "MeasureDiscrimination/MeasurableLeftInverse.lean": "e5ccc7249f2033aafdbb367829524d08a773f62292996c2ff189f466c3fe8cd5",
+    "MeasureDiscrimination/ProductDiscrimination.lean": "2b7dfb99c7ce78bdfed381054e1762c908a7ef97624c4e07c82d72628e90a6d1",
+    "MeasureDiscrimination.lean": "03306c622d9db9ae18c3bde4a98c32a3611e274d87e596df06a7ed46d59c8971",
+    "MeasureDiscriminationExamples/Basic.lean": "20e913fe941c2452548bcdf6003a8279dbfe952bc8a3122a138abab5c262f3b5",
+    "MeasureDiscriminationExamples.lean": "ed8c242cdf51270b87a6434d91ee1632dce495fd5583a2b6b3c0397f24558ab1"
+  },
+  "verification_input_sha256": {
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+    "lakefile.lean": "4a4637ccc0f1ab92c9fb4e538899ed378d390b63c53a6ff8fbe0a09a5138d42a",
+    "lake-manifest.json": "98e992c76063d391b995dd730a0b5d73f2618dce1cf84cb0c54bb1f999fc12f7",
+    "verification.json": "49d54684398b7fe8f74ad75761a946f95758bbc6cd04b39ad2fef049f810ae37",
+    "scripts/verify.py": "5728ad0a661ba7f69a4c2aee515e5c8269ecb7138b7249a0610d4ccc347661cb",
+    "scripts/test_verify.py": "11797d41f3aca28b545b6f2f1c77738ae16f3e96afe732077aed9c60207f5673",
+    "scripts/fetch_mathlib_cache.py": "72c55aac4b0085f2e1e6bfa778db84ca99661c78bc15dc5721234291200fa14b",
+    "scripts/test_fetch_mathlib_cache.py": "c7de65306e04de14d788b0ea269bbfc64b827a4f68e7684cf1f1ec10bb90da7e"
+  },
+  "stages": [
+    {
+      "name": "compiler-version",
+      "exit_code": 0
+    },
+    {
+      "name": "exact-build",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination-MeasurableLeftInverse.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination-ProductDiscrimination.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscrimination.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscriminationExamples-Basic.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "lint-MeasureDiscriminationExamples.lean",
+      "exit_code": 0
+    },
+    {
+      "name": "axioms",
+      "exit_code": 0
+    }
+  ],
+  "full_linter_count": 16,
+  "named_declaration_count": 19,
+  "axioms": {
+    "MeasureDiscrimination.map_withDensity_comp_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.absolutelyContinuous_map_iff_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.map_tilted_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_map_comp_of_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.klDiv_map_of_measurable_leftInverse": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_fst_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_snd_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_comp_fst_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.ae_comp_snd_of_ae": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.prod_absolutelyContinuous": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_prod": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.llr_prod": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.prod_absolutelyContinuous_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.rnDeriv_prod_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.llr_prod_common_right": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.klDiv_duplicate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary_preserves_ac": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "MeasureDiscrimination.Examples.fairAuxiliary_cancels_llr": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "python_regression_tests": 20,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "historical_receipts": "Other qualification records retain their original compiler and source identities; this receipt does not establish hosted CI or upstream acceptance."
+}

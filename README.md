@@ -45,12 +45,13 @@ independent fair Boolean observation and show its cancellation from the log-like
 
 ## Build
 
-The supported pair is **Lean 4.34.1** and **Mathlib
-`d13f23b723b8a846827a245b89c10fc7d3f11612`**. Dependencies are locked in
-`lake-manifest.json`; compatibility with other versions has not been established.
+The supported pair is **Lean 4.35.0** and **Mathlib
+`56a005855ea17e0b0958f73ec801ae140b0a1679`**. Dependencies are locked in
+`lake-manifest.json`. The fresh
+[compatibility qualification](docs/compatibility-qualification.json) covers this pair.
 
 ```bash
-lake exe cache get
+python3 scripts/fetch_mathlib_cache.py
 lake --rehash --wfail build
 python3 -m unittest discover -s scripts -p 'test_*.py'
 python3 scripts/verify.py

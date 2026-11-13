@@ -3,8 +3,10 @@ Copyright (c) 2026 Adam Benenson. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Adam Benenson
 -/
-import Mathlib.InformationTheory.KullbackLeibler.DataProcessing
-import Mathlib.MeasureTheory.Integral.Lebesgue.Map
+module
+
+public import Mathlib.InformationTheory.KullbackLeibler.DataProcessing
+public import Mathlib.MeasureTheory.Integral.Lebesgue.Map
 
 /-!
 # Relative entropy under a measurable left inverse
@@ -22,6 +24,8 @@ and tilting transport lemmas remain useful independently of that consequence.
 - `rnDeriv_map_comp_of_leftInverse`: Radon--Nikodym density transport.
 - `klDiv_map_of_measurable_leftInverse`: exact KL invariance under lossless encoding.
 -/
+
+@[expose] public section
 
 namespace MeasureDiscrimination
 
