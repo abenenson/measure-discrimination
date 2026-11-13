@@ -3,8 +3,11 @@ Copyright (c) 2026 Adam Benenson. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Adam Benenson
 -/
-import MeasureDiscrimination
-import Mathlib.Probability.Distributions.Uniform
+module
+
+public import MeasureDiscrimination
+public import Mathlib.Probability.Distributions.Uniform
+public import Mathlib.Tactic.NormNum
 
 /-!
 # Lossless duplication and an independent fair auxiliary
@@ -12,6 +15,8 @@ import Mathlib.Probability.Distributions.Uniform
 The duplicate encoding needs no measurable-range hypothesis. A genuinely random
 common auxiliary contributes no additional log-likelihood discrimination.
 -/
+
+@[expose] public section
 
 namespace MeasureDiscrimination.Examples
 
@@ -28,12 +33,12 @@ theorem klDiv_duplicate (μ ν : Measure α) [IsFiniteMeasure μ] [IsFiniteMeasu
 
 /-- A fair auxiliary observation, independent of the law being discriminated. -/
 noncomputable def fairAuxiliary : Measure Bool :=
-  (PMF.uniformOfFintype Bool).toMeasure
+  Measure.uniformOfFinset (Finset.univ : Finset Bool)
 
 /-- The auxiliary is a probability law. -/
 instance : IsProbabilityMeasure fairAuxiliary := by
-  change IsProbabilityMeasure (PMF.uniformOfFintype Bool).toMeasure
-  infer_instance
+  constructor
+  norm_num [fairAuxiliary, Measure.uniformOfFinset_apply, ENNReal.div_self]
 
 /-- Attaching the same fair auxiliary preserves absolute continuity. -/
 theorem fairAuxiliary_preserves_ac (μ ν : Measure α) (hAC : μ ≪ ν) :

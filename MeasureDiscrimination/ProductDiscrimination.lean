@@ -3,9 +3,11 @@ Copyright (c) 2026 Adam Benenson. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Adam Benenson
 -/
-import Mathlib.MeasureTheory.Integral.Prod
-import Mathlib.MeasureTheory.Measure.LogLikelihoodRatio
-import Mathlib.MeasureTheory.Measure.WithDensity
+module
+
+public import Mathlib.MeasureTheory.Integral.Prod
+public import Mathlib.MeasureTheory.Measure.LogLikelihoodRatio
+public import Mathlib.MeasureTheory.Measure.WithDensity
 
 /-!
 # Discrimination of product measures
@@ -26,6 +28,8 @@ the same independently distributed apparatus.
 - `llr_prod_common_right`: a common right factor contributes zero discrimination.
 -/
 
+@[expose] public section
+
 namespace MeasureDiscrimination
 
 open MeasureTheory
@@ -43,7 +47,7 @@ theorem ae_fst_of_ae
     ∀ᵐ pair ∂μ.prod ν, property pair.1 := by
   have hMapped :
       ∀ᵐ point ∂Measure.map Prod.fst (μ.prod ν), property point := by
-    rw [measurePreserving_fst.map_eq]
+    rw [Measure.map_fst_prod, measure_univ, one_smul]
     exact h
   exact ae_of_ae_map measurable_fst.aemeasurable hMapped
 
@@ -67,7 +71,7 @@ theorem ae_comp_fst_of_ae
     (fun pair : α × β ↦ f pair.1) =ᵐ[μ.prod ν]
       fun pair ↦ g pair.1 := by
   have hMapped : f =ᵐ[Measure.map Prod.fst (μ.prod ν)] g := by
-    rw [measurePreserving_fst.map_eq]
+    rw [Measure.map_fst_prod, measure_univ, one_smul]
     exact h
   exact ae_of_ae_map measurable_fst.aemeasurable hMapped
 
@@ -88,7 +92,7 @@ theorem prod_absolutelyContinuous
     (μ₁ ν₁ : Measure α) (μ₂ ν₂ : Measure β)
     [SFinite ν₂] (hFirst : μ₁ ≪ ν₁) (hSecond : μ₂ ≪ ν₂) :
     μ₁.prod μ₂ ≪ ν₁.prod ν₂ := by
-  let : SFinite μ₂ := sFinite_of_absolutelyContinuous hSecond
+  let : SFinite μ₂ := sfinite_of_absolutelyContinuous hSecond
   exact hFirst.prod hSecond
 
 /-- The Radon--Nikodym derivative of product laws is the product of the marginal derivatives. -/

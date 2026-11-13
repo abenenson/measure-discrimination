@@ -1,8 +1,8 @@
 # Pinned Mathlib overlap and contribution scope
 
 Source audit: 2026-10-23, against the actual checked-out Mathlib commit
-`d13f23b723b8a846827a245b89c10fc7d3f11612`, the revision locked by this package.
-The compiler pin remains Lean 4.34.1. This is a small convenience library built from existing
+`d13f23b723b8a846827a245b89c10fc7d3f11612`, the historical revision used for this comparison.
+That comparison used Lean 4.34.1. This is a small convenience library built from existing
 measure-theoretic foundations, with no claim of new KL mathematics or upstream acceptance.
 
 ## KL invariance is already a consequence of the pinned dependency
@@ -59,3 +59,9 @@ projection wrappers largely expose existing results. They do not justify a large
 upstream contribution claim. Any discussion should be one focused mathematical patch at a time.
 Repository visibility and release records establish publication status; local qualification
 does not establish a hosted run or upstream acceptance.
+
+## Current compatibility pin
+
+The supported pair is now Lean 4.35.0 / Mathlib
+`56a005855ea17e0b0958f73ec801ae140b0a1679`. The comparison above remains historical;
+this compatibility change preserves the theorem statements and does not claim upstream acceptance.
