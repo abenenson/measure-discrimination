@@ -69,3 +69,12 @@ and hosted CI results describe the source snapshot each actually checked.
 Copyright 2026 Adam Benenson. Apache 2.0. [LICENSE](LICENSE), [NOTICE](NOTICE), and
 [ORIGIN.json](ORIGIN.json) record licensing and the initial public file inventory. The inventory
 hashes describe the initial public adaptation. Subsequent changes are recorded in Git history.
+
+## Releases and related libraries
+
+Start with the [`v0.1.0` release](https://github.com/abenenson/measure-discrimination/releases/tag/v0.1.0) for the supported toolchain and verification run.
+
+- [finite-markov-processes](https://github.com/abenenson/finite-markov-processes) covers history laws and their densities.
+- [finite-relative-entropy](https://github.com/abenenson/finite-relative-entropy) covers KL divergence and data processing.
+
+[Browse the Lean library index](https://adambenenson.com/projects/#formal-methods).
